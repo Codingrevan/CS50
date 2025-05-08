@@ -1,0 +1,21 @@
+se term pdf color solid enhanced font "Times-Roman, 10"
+set out "insert_sort.pdf"
+
+se gri 
+se ke top left font ", 8"
+
+se ylab "T(n) - czas sortowania [s]"
+se xlab "n - rozmiar tablicy"
+
+se format x "%1.0e"
+se ke top ri 
+
+f(x) = a*x*x
+
+fit f(x) 'insert_sort_test.dat' via a  
+
+ti = sprintf("T(n) = %0.2e * n^2", a)
+
+pl'insert_sort_test.dat' w p pt 7 notit, f(x) tit ti
+
+
